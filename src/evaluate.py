@@ -2,7 +2,11 @@ import sys
 import os
 import codecs
 import logging
-from itertools import izip
+#from itertools import zip
+try:
+    from itertools import izip as zip
+except ImportError: # will be 3.x series
+    pass
 from SARI import SARIsent
 from nltk.translate.bleu_score import *
 smooth = SmoothingFunction()
@@ -58,12 +62,12 @@ def print_scores(pairs, whichone = ''):
     # replace filenames by hypothesis name for csv pretty print
     for k,v in pairs:
         hypothesis = get_hypothesis(k)
-        print "\t".join( [whichone, "{:10.2f}".format(v), k, hypothesis] )
+        print("\t".join( [whichone, "{:10.2f}".format(v), k, hypothesis] ))
 
 def SARI_file(source, preds, refs, preprocess):
     files = [codecs.open(fis, "r", 'utf-8') for fis in [source, preds, refs]]
     scores = []
-    for src, pred, ref in izip(*files):
+    for src, pred, ref in zip(*files):
         references = [preprocess(r) for r in ref.split('\t')]
         scores.append(SARIsent(preprocess(src), preprocess(pred), references))
     for fis in files:
@@ -77,7 +81,7 @@ def BLEU_file(source, preds, refs, preprocess=as_is):
     scores = []
     references = []
     hypothese = []
-    for pred, ref in izip(*files):
+    for pred, ref in zip(*files):
         references.append([word_tokenize(preprocess(r)) for r in ref.split('\t')])
         hypothese.append(word_tokenize(preprocess(pred)))
     for fis in files:

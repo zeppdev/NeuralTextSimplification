@@ -58,10 +58,10 @@ def main():
         logging.info("Window size: " + str(wind_size))
     except Exception, e:
         logging.error(str(e))
-        print "----------------------------------------"
+        print("----------------------------------------")
         logging.info(sys.argv[0] + "    PATH_TO_CORPUS    EMBEDDING_SIZE    WINDOW_SIZE")
         sys.exit(1)
-    print "----------------------------------------"
+    print("----------------------------------------")
     train_w2v(corpus, wind_size, emb_size)    
 
 if __name__ == '__main__':
