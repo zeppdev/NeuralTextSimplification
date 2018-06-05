@@ -21,7 +21,7 @@ We present the first attempt at using sequence to sequence neural networks to mo
     ```
 2. Checkout this repository including the submodules:
 ```bash
-   git clone --recursive https://github.com/senisioi/NeuralTextSimplification.git
+   git clone --recursive https://github.com/zeppdev/Text-Simplification.git
 ```
 3. Download the pre-trained released models [NTS](https://drive.google.com/open?id=0B_pjS_ZjPfT9dEtrbV85UXhSelU) and [NTS-w2v](https://drive.google.com/open?id=0B_pjS_ZjPfT9ZTRfSFp4Ql92U0E) (NOTE: when using the released pre-trained models, due to recent changes in third party software, the output of our systems might not be identical to the one reported in the paper.)
 ```bash
@@ -45,6 +45,11 @@ We present the first attempt at using sequence to sequence neural networks to mo
     ```bash
        python src/evaluate.py ./data/test.en ./data/references/references.tsv ./predictions/
     ```
+7. To create embeddings for training, you also need to install zlib and zlib, so for example (on Ubuntu 18):
+    ```bash
+	sudo apt-get install zlib1g-dev
+	luarocks install lua-zlib
+    ```
 
 ## The Content of this Repository
 #### ./src 
@@ -57,9 +62,9 @@ We present the first attempt at using sequence to sequence neural networks to mo
 Alternatively, you may use [our forked code](https://github.com/senisioi/OpenNMT/) which comes directly as a submodule.
 
 #### ./configs
-Contains the OpenNMT config file. To train, please update the config file with the appropriate data on your local system and run 
+Contains the OpenNMT config file. To train, please update the config file with the appropriate data on your local system and run (NB! Needs to be run from OpenNMT directory!). 
 ```bash
-	th train -config $PATH_TO_THIS_DIR/configs/NTS.cfg
+	th train.lua -config $PATH_TO_THIS_DIR/configs/NTS.cfg
 ```
 #### ./predictions
 Contains predictions from previous systems (Wubben et al., 2012), (Glavas and Stajner, 2015), and (Xu et al., 2016), and the generated predictions of the NTS models reported in the paper:
