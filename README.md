@@ -57,7 +57,7 @@ We present the first attempt at using sequence to sequence neural networks to mo
 Alternatively, you may use [our forked code](https://github.com/senisioi/OpenNMT/) which comes directly as a submodule.
 
 #### ./configs
-Contains the OpenNMT config file. To train, please update the config file with the appropriate data on your local system and run 
+Contains the OpenNMT config file. To train, please update the config file with the appropriate data on your local system and run (NB! Needs to be run from OpenNMT directory!). 
 ```bash
 	th train.lua -config $PATH_TO_THIS_DIR/configs/NTS.cfg
 ```
