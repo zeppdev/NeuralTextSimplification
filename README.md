@@ -45,6 +45,11 @@ We present the first attempt at using sequence to sequence neural networks to mo
     ```bash
        python src/evaluate.py ./data/test.en ./data/references/references.tsv ./predictions/
     ```
+7. To create embeddings for training, you also need to install zlib and zlib, so for example (on Ubuntu 18):
+    ```bash
+	sudo apt-get install zlib1g-dev
+	luarocks install lua-zlib
+    ```
 
 ## The Content of this Repository
 #### ./src 
