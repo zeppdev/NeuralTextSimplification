@@ -7,8 +7,8 @@ MODEL_PATH=`readlink -f ../../models/NTS_epoch11_10.19.t7`
 MODEL=${MODEL_PATH##*/}
 
 BEAM_SIZE=5
-#GPUS=1,2
-GPUS=0
+GPUS=1
+#GPUS=0
 OUTPUT=${RES_DIR}/result_${MODEL}_${BEAM_SIZE}
 LOG_OUT=${RES_DIR}/result_${MODEL}_${BEAM_SIZE}.log
 
